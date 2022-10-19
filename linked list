@@ -1,0 +1,382 @@
+insert to LL:
+
+#include <stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *link;
+};
+struct node* insertending(struct node *head,int data)
+{
+
+     struct node temp= (struct node) malloc(sizeof(struct node));
+    temp->data = data;
+
+   temp->link = head;
+  head=temp;
+  return head;
+}
+
+
+
+int main()
+{
+
+    struct node *head=NULL;
+      struct node *p;
+    struct node *ptr=malloc(sizeof(struct node));
+    ptr->data=20;
+    ptr->link=NULL;
+    head=ptr;
+
+    struct node *ptr1=malloc(sizeof(struct node));
+    ptr1->data=30;
+
+     ptr->link=ptr1;
+     ptr1->link=NULL;
+
+    int data=40;
+    head=insertending(head,data);
+    p=head;
+   while(p!=NULL)
+    {
+   printf("%d ",p->data);
+   p=p->link;
+}
+    return 0;
+}
+
+how to add at end LL: 
+
+
+#include <stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *link;
+};
+struct node* insertending(struct node *head,int data)
+{
+      struct node *temp=head;
+     struct node newnode= (struct node) malloc(sizeof(struct node));
+    newnode->data = data;
+   newnode->link = NULL;
+   while(temp->link!=NULL)
+    {
+
+   temp=temp->link;
+    }
+    temp->link=newnode;
+  return head;
+}
+
+
+
+int main()
+{
+
+    struct node *head=NULL;
+      struct node *p;
+    struct node *ptr=malloc(sizeof(struct node));
+    ptr->data=20;
+    ptr->link=NULL;
+    head=ptr;
+
+    struct node *ptr1=malloc(sizeof(struct node));
+    ptr1->data=30;
+
+     ptr->link=ptr1;
+     ptr1->link=NULL;
+
+    int data=40;
+    head=insertending(head,data);
+    p=head;
+   while(p!=NULL)
+    {
+   printf("%d ",p->data);
+   p=p->link;
+}
+    return 0;
+}
+
+
+
+how to add at middle in LL:
+
+
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node*link;
+    
+};
+struct node addatmid(struct node head,int data,int pos)
+
+{
+    struct node *temp=head;
+    struct node* newend=malloc(sizeof(struct node));
+    newend->data=data;
+   newend->link=NULL;
+   pos--;
+   while(pos!=1)
+    {
+        temp=temp->link;
+        pos--;
+    }
+    newend->link=temp->link;
+    temp->link=newend;
+    return head;
+}
+int main()
+{
+    struct node* head=NULL;
+    struct node* p;
+    
+    
+    struct node * ptr=malloc(sizeof(struct node));
+    ptr->data=20;
+    ptr->link=NULL;
+    head=ptr;
+    
+    struct node * ptr1=malloc(sizeof(struct node));
+    ptr1->data=30;
+    ptr1->link=NULL;
+    ptr->link=ptr1;
+    
+    
+    struct node* ptr2=malloc(sizeof(struct node));
+    ptr2->data=40;
+    ptr1->link=NULL;
+    ptr1->link=ptr2;
+    
+    
+    int data=10,pos=3;
+    head=addatmid(head,data,pos);
+    p=head;
+    while(p!=NULL)
+    {
+        printf("%d\n",p->data);
+        p=p->link;
+    }
+    return 0;
+}
+
+
+
+how to delete at beg in LL:
+
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node*link;
+    
+};
+struct node delatbeg(struct node head)
+
+{
+    if(head==NULL)
+{
+    printf("the list is empty");
+}
+else
+{
+    struct node *temp=head;
+    head=head->link;
+}
+return head;
+}
+int main()
+{
+    struct node* head=NULL;
+    struct node* p;
+    
+    
+    struct node * ptr=malloc(sizeof(struct node));
+    ptr->data=20;
+    ptr->link=NULL;
+    head=ptr;
+    
+    struct node * ptr1=malloc(sizeof(struct node));
+    ptr1->data=30;
+    ptr1->link=NULL;
+    ptr->link=ptr1;
+    
+    
+    struct node* ptr2=malloc(sizeof(struct node));
+    ptr2->data=40;
+    ptr1->link=NULL;
+    ptr1->link=ptr2;
+    
+    
+    head=delatbeg(head);
+    p=head;
+    while(p!=NULL)
+    {
+        printf("%d\n",p->data);
+        p=p->link;
+    }
+    return 0;
+}
+
+how to delete at end in LL:
+
+#include <stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *link;
+    
+};
+
+struct node* addatdel(struct node*head)
+{
+    if(head==NULL)
+    {
+        printf("the list is empty");
+        
+    }
+    else if(head->link==NULL)
+    {
+        free(head);
+        head=NULL;
+    }
+    else
+    {
+        struct node *temp=head;
+        struct node *temp1=head;
+        while(temp->link!=NULL)
+        {
+            temp1=temp;
+            temp=temp->link;
+        }
+        temp1->link=NULL;
+        free(temp);
+        temp=NULL;
+    }
+        return head;
+    }
+
+int main()
+{
+    struct node *head=NULL;
+    struct node *p=head;
+    
+    
+    struct node* k=malloc(sizeof(struct node));
+    k->data=10;
+    k->link=NULL;
+    head=k;
+    
+    struct node* k1=malloc(sizeof(struct node));
+    k1->data=20;
+    k1->link=NULL;
+    k->link=k1;
+    
+    struct node* k2=malloc(sizeof(struct node));
+    k2->data=30;
+    k2->link=NULL;
+    k1->link=k2;
+    
+    struct node* k3=malloc(sizeof(struct node));
+    k3->data=30;
+    k3->link=NULL;
+    k2->link=k3;
+    
+    head=addatdel(head);
+    p=head;
+    while(p!=NULL)
+    {
+       printf("%d\n",p->data);
+        p=p->link;
+    }
+    return 0;
+}
+
+
+
+how to delete at ith pos in LL :
+
+
+
+
+
+
+#include <stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *link;
+};
+struct node* delatmid(struct node **head,int pos)
+
+{
+    struct node *prev=*head;
+      struct node *curr=*head;
+    if(*head==NULL)
+    {
+        printf("linked list is empty");
+
+    }
+    else if(pos==1)
+    {
+        *head=curr->link;
+        free(curr);
+        curr=NULL;
+    }
+    else
+    {
+        while(pos!=1)
+        {
+            prev=curr;
+            curr=curr->link;
+            pos--;
+        }
+        prev->link=curr->link;
+        free(curr);
+        curr=NULL;
+    }
+    return *head;
+}
+int main()
+{
+
+    struct node *head=NULL;
+      struct node *p;
+    struct node *ptr=malloc(sizeof(struct node));
+    ptr->data=10;
+    ptr->link=NULL;
+    head=ptr;
+
+    struct node *ptr1=malloc(sizeof(struct node));
+    ptr1->data=20;
+     ptr1->link=NULL;
+      ptr->link=ptr1;
+
+      struct node *ptr2=malloc(sizeof(struct node));
+      ptr2->data=30;
+      ptr2->link=NULL;
+      ptr1->link=ptr2;
+
+     struct node *ptr3=malloc(sizeof(struct node));
+      ptr3->data=40;
+      ptr3->link=NULL;
+      ptr2->link=ptr3;
+      
+     int pos=1;
+     head=delatmid(&head,pos);
+     p=head;
+     while(p!=NULL)
+    {
+    printf("%d ",p->data);
+    p=p->link;
+}
+    return 0;
+}
